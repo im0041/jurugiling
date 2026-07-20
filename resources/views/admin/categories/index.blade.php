@@ -49,11 +49,8 @@
             <td>{{ $category->slug }}</td>
 
             <td>
-
-                Edit
-
-                Hapus
-
+                <a href="{{ route('categories.edit', $category) }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href=# class="btn btn-warning btn-sm">hapus</a>
             </td>
 
         </tr>
