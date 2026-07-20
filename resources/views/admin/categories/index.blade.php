@@ -50,7 +50,14 @@
 
             <td>
                 <a href="{{ route('categories.edit', $category) }}" class="btn btn-warning btn-sm">Edit</a>
-                <a href=# class="btn btn-warning btn-sm">hapus</a>
+                <form action="{{ route('categories.destroy', $category) }}"
+                method="POST"
+                class="d-inline"
+                onsubmit="return confirm('Yakin ingin menghapus kategori ini?')">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger btn-sm">Hapus</button>
+                </form>
             </td>
 
         </tr>
