@@ -5,7 +5,7 @@
         Dashboard
     </a>
 
-    <a href="#"
+    <a href="{{ route('categories.index') }}"
         class="list-group-item list-group-item-action">
         Kategori
     </a>
