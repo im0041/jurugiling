@@ -62,7 +62,11 @@
 
                 <td>{{ $product->stock }}</td>
 
-                <td>-</td>
+                <td>
+                    <a href="{{ route('products.edit', $product) }}" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+                </td>
 
             </tr>
 
@@ -75,9 +79,7 @@
                     Belum ada produk.
 
                 </td>
-
             </tr>
-
         @endforelse
 
     </tbody>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -75,17 +76,46 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(product $product)
     {
-        //
+        $categories = Category::orderBy('name')->get();
+        return view(
+        'admin.products.edit',
+        compact('product', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update([
+
+        'category_id' => $request->category_id,
+
+        'sku' => strtoupper($request->sku),
+
+        'name' => $request->name,
+
+        'slug' => Str::slug($request->name),
+
+        'description' => $request->description,
+
+        'purchase_price' => $request->purchase_price,
+
+        'selling_price' => $request->selling_price,
+
+        'stock' => $request->stock,
+
+        'minimum_stock' => $request->minimum_stock,
+
+        'is_active' => $request->boolean('is_active'),
+
+    ]);
+
+    return redirect()
+        ->route('products.index')
+        ->with('success', 'Produk berhasil diperbarui.');
     }
 
     /**

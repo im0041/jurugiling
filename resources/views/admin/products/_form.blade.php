@@ -12,7 +12,7 @@
         @foreach($categories as $category)
             <option
                 value="{{ $category->id }}"
-                {{ old('category_id') == $category->id ? 'selected' : '' }}
+                {{ old('category_id', $product->category_id??'') == $category->id ? 'selected' : '' }}
             >
                 {{ $category->name }}
             </option>
@@ -26,7 +26,7 @@
         type="text"
         name="sku"
         class="form-control"
-        value="{{ old('sku') }}"
+        value="{{ old('sku', $product->sku??'')  }}"
     >
     </div>
 
@@ -37,7 +37,7 @@
         type="text"
         name="name"
         class="form-control"
-        value="{{ old('name') }}"
+        value="{{ old('name', $product->name??'') }}"
     >
     </div>
     
@@ -48,7 +48,7 @@
         type="number"
         name="purchase_price"
         class="form-control"
-        value="{{ old('purchase_price') }}"
+        value="{{ old('purchase_price', $product->purchase_price??'') }}"
     >
     </div>
 
@@ -59,7 +59,7 @@
         type="number"
         name="selling_price"
         class="form-control"
-        value="{{ old('selling_price') }}"
+        value="{{ old('selling_price', $product->selling_price??'') }}"
     >
     </div>
 
@@ -70,7 +70,7 @@
         type="number"
         name="stock"
         class="form-control"
-        value="{{ old('stock', 5) }}"
+        value="{{ old('stock', $product->stock??'') }}"
     >
     </div>
 
@@ -81,7 +81,7 @@
         type="number"
         name="minimum_stock"
         class="form-control"
-        value="{{ old('minimum_stock', 5) }}"
+        value="{{ old('minimum_stock', $product->minimum_stock??'') }}"
     >
     </div>
 
@@ -95,7 +95,7 @@
         name="description"
         rows="4"
         class="form-control"
-    >{{ old('description') }}</textarea>
+    >{{ old('description', $product->description??'') }}</textarea>
     </div>
 
     <div class="form-check mb-3">
