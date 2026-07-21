@@ -1,0 +1,98 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Category;
+use App\Http\Requests\StoreProductRequest;
+use Illuminate\Support\Str;
+
+class ProductController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+         $products = Product::with('category')
+        ->latest()
+        ->paginate(10);
+        return view('admin.products.index', compact('products'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $categories = Category::orderBy('name')->get();
+        return view('admin.products.create', compact('categories'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        Product::create([
+
+        'category_id' => $request->category_id,
+
+        'sku' => strtoupper($request->sku),
+
+        'name' => $request->name,
+
+        'slug' => Str::slug($request->name),
+
+        'description' => $request->description,
+
+        'purchase_price' => $request->purchase_price,
+
+        'selling_price' => $request->selling_price,
+
+        'stock' => $request->stock,
+
+        'minimum_stock' => $request->minimum_stock,
+
+        'is_active' => $request->boolean('is_active'),
+
+    ]);
+
+    return redirect()
+        ->route('products.index')
+        ->with('success', 'Produk berhasil ditambahkan.');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+}

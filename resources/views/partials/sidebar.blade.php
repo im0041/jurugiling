@@ -10,7 +10,7 @@
         Kategori
     </a>
 
-    <a href="#"
+    <a href="{{ route('products.index') }}"
         class="list-group-item list-group-item-action">
         Produk
     </a>
