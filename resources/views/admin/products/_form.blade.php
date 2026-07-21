@@ -18,7 +18,7 @@
             </option>
         @endforeach
     </select>
-    
+
     <div class="mb-3">
     <label class="form-label">SKU</label>
 
@@ -96,6 +96,36 @@
         rows="4"
         class="form-control"
     >{{ old('description', $product->description??'') }}</textarea>
+    </div>
+
+    <div class="mb-3">
+    <label class="form-label">Gambar Produk</label>
+
+    @if (!empty($product?->image))
+    <div class="mb-3">
+        <label class="form-label">Gambar Saat Ini</label>
+
+        <div>
+            <img
+                src="{{ asset('storage/' . $product->image) }}"
+                alt="{{ $product->name }}"
+                class="img-thumbnail"
+                style="max-width: 200px"
+            >
+        </div>
+    </div>
+    @endif
+    <input
+        type="file"
+        name="image"
+        class="form-control @error('image') is-invalid @enderror"
+    >
+
+    @error('image')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
     </div>
 
     <div class="form-check mb-3">

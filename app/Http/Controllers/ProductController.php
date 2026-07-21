@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -36,6 +37,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $image = null;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('products', 'public');
+            }
+
         Product::create([
 
         'category_id' => $request->category_id,
@@ -57,6 +63,8 @@ class ProductController extends Controller
         'minimum_stock' => $request->minimum_stock,
 
         'is_active' => $request->boolean('is_active'),
+        
+        'image' => $image,
 
     ]);
 
@@ -89,6 +97,14 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
+        $image = $product->image;
+        if ($request->hasFile('image')) {
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+                }
+                $image = $request->file('image')->store('products', 'public');
+}
+
         $product->update([
 
         'category_id' => $request->category_id,
@@ -108,7 +124,9 @@ class ProductController extends Controller
         'stock' => $request->stock,
 
         'minimum_stock' => $request->minimum_stock,
-
+        
+        'image' => $image,
+        
         'is_active' => $request->boolean('is_active'),
 
     ]);

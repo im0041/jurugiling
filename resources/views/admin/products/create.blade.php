@@ -8,7 +8,7 @@
     Tambah Produk
 </h2>
 
-<form action="{{ route('products.store') }}" method="POST">
+<form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     @include('admin.products._form')
     <button class="btn btn-success">
