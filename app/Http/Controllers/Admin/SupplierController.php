@@ -70,15 +70,19 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        return view('admin.suppliers.edit', compact('supplier'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(UpdateSupplierRequest $request, Supplier $supplier)
     {
-        //
+    $supplier->update($request->validated());
+
+    return redirect()
+        ->route('suppliers.index')
+        ->with('success', 'Supplier berhasil diperbarui.');
     }
 
     /**

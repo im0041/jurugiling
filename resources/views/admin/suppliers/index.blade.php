@@ -46,9 +46,9 @@
 
                         <td>
 
-                            <button class="btn btn-warning btn-sm" disabled>
+                            <a href="{{ route('suppliers.edit', $supplier) }}" class="btn btn-warning btn-sm">
                                 Edit
-                            </button>
+                            </a>
 
                             <button class="btn btn-danger btn-sm" disabled>
                                 Hapus

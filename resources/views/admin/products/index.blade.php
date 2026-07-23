@@ -10,6 +10,7 @@
 
 <a href="{{ route('products.create') }}"
     class="btn btn-primary mb-3">
+    <i class="bi bi-plus-circle"></i>
     Tambah Produk
 </a>
 @if(session('success'))
