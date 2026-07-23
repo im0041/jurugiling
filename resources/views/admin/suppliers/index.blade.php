@@ -50,9 +50,14 @@
                                 Edit
                             </a>
 
-                            <button class="btn btn-danger btn-sm" disabled>
-                                Hapus
-                            </button>
+                            <form action="{{ route('suppliers.destroy', $supplier) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus supplier ini?')">
+                                    Hapus
+                                </button>
+
+</form>
 
                         </td>
 
