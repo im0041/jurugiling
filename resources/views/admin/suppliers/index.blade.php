@@ -2,85 +2,27 @@
 
 @section('content')
 
+    
         <h2 class="mb-4">
            Master Supplier
         </h2>
 
+        <a href="{{ route('suppliers.trash') }}"
+               class="btn btn-secondary mb-3">
+                <i class="bi bi-trash"></i>
+                Recycle Bin
+        </a>
         <a href="{{ route('suppliers.create') }}" class="btn btn-primary mb-3">
             <i class="bi bi-plus-circle"></i>
             Tambah Supplier
         </a>
-
     
 
-        <table class="table table-bordered table-hover">
+    <div class="card-body">
+        @include('admin.suppliers._table', [
+        'isTrash' => false
+        ])
+    </div>
 
-            <thead>
-
-                <tr>
-                    <th width="80">No</th>
-                    <th>Kode</th>
-                    <th>Nama</th>
-                    <th>Telepon</th>
-                    <th>Email</th>
-                    <th width="150">Aksi</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                @forelse($suppliers as $supplier)
-
-                    <tr>
-
-                        <td>{{ $loop->iteration }}</td>
-
-                        <td>{{ $supplier->code }}</td>
-
-                        <td>{{ $supplier->name }}</td>
-
-                        <td>{{ $supplier->phone ?? '-' }}</td>
-
-                        <td>{{ $supplier->email ?? '-' }}</td>
-
-                        <td>
-
-                            <a href="{{ route('suppliers.edit', $supplier) }}" class="btn btn-warning btn-sm">
-                                Edit
-                            </a>
-
-                            <form action="{{ route('suppliers.destroy', $supplier) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus supplier ini?')">
-                                    Hapus
-                                </button>
-
-</form>
-
-                        </td>
-
-                    </tr>
-
-                @empty
-
-                    <tr>
-
-                        <td colspan="6" class="text-center">
-                            Belum ada data supplier.
-                        </td>
-
-                    </tr>
-
-                @endforelse
-
-            </tbody>
-
-        </table>
-
-        <div class="mt-3">
-            {{ $suppliers->links() }}
-        </div>
 
 @endsection

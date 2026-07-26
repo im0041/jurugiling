@@ -18,9 +18,24 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    Route::get('suppliers/trash', [SupplierController::class, 'trash'])
+    ->name('suppliers.trash');
+    
+    Route::patch('suppliers/{id}/restore', [SupplierController::class, 'restore'])
+    ->name('suppliers.restore');
+    
+    Route::delete('suppliers/{id}/force-delete', [SupplierController::class, 'forceDelete'])
+    ->name('suppliers.force-delete');
+    
+    Route::resource('suppliers', SupplierController::class);
+   
     Route::resource('products', ProductController::class);
+    
     Route::resource('suppliers', SupplierController::class);
 });
 

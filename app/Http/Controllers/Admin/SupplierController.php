@@ -12,7 +12,9 @@ class SupplierController extends Controller
 {
     private function generateCode(): string
     {
-        $lastSupplier = Supplier::latest('id')->first();
+        $lastSupplier = Supplier::withTrashed()
+        ->latest('id')
+        ->first();
 
         $number = $lastSupplier
             ? ((int) substr($lastSupplier->code, 3)) + 1
@@ -95,4 +97,32 @@ class SupplierController extends Controller
             ->route('suppliers.index')
             ->with('success', 'Supplier berhasil dihapus.');
     }
+
+    public function trash()
+    {
+        $suppliers = Supplier::onlyTrashed()
+        ->latest('deleted_at')
+        ->paginate(10);
+        
+        return view('admin.suppliers.trash', compact('suppliers'));
+        }
+
+    public function forceDelete($id) {
+        $supplier = Supplier::onlyTrashed()->findOrFail($id);
+        $supplier->forceDelete();
+        
+        return redirect()
+        ->route('suppliers.trash')
+        ->with('success', 'Supplier berhasil dihapus permanen.');
+        }
+        
+        public function restore($id){
+            $supplier = Supplier::onlyTrashed()->findOrFail($id);
+            $supplier->restore();
+            
+            return redirect()
+            ->route('suppliers.trash')
+            ->with('success', 'Supplier berhasil dipulihkan.');
+            }
+
 }
