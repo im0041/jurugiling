@@ -1,58 +1,290 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# ☕ Juru Giling
 
-## About Laravel
+### Inventory Management System for Coffee Shops
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Built with Laravel using clean architecture principles, reusable components, and Git Flow development practices.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![AdminLTE](https://img.shields.io/badge/AdminLTE-4-3C8DBC?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+</div>
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# 📖 About
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Juru Giling** is a web-based inventory management system developed for coffee shops and small businesses.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+This project is built incrementally following software engineering practices such as:
 
-## Agentic Development
+- Feature Branch Workflow
+- Clean Architecture
+- Reusable Blade Partials
+- Form Request Validation
+- Route Model Binding
+- Soft Delete
+- Incremental Development
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+This repository serves as both a learning project and a portfolio demonstrating Laravel best practices.
 
-```bash
-composer require laravel/boost --dev
+---
 
-php artisan boost:install
+# ✨ Current Features
+
+## 🔐 Authentication
+
+- Login
+- Logout
+
+---
+
+## 📊 Dashboard
+
+- Statistics Cards
+- Product Summary
+- Category Summary
+
+---
+
+## 📦 Master Data
+
+### Category
+
+- CRUD
+- Validation
+
+### Product
+
+- CRUD
+- Image Upload
+- Slug Generation
+- Product Status
+- Category Relationship
+
+### Supplier
+
+- CRUD
+- Auto Generate Supplier Code
+- Pagination
+- Soft Delete
+- Restore
+- Permanent Delete
+- Reusable Form
+- Reusable Table
+
+---
+
+# 🚧 Development Progress
+
+- [x] Authentication
+- [x] Dashboard
+- [x] Category Module
+- [x] Product Module
+- [x] Supplier Module
+- [ ] Purchase Module
+- [ ] Sales Module
+- [ ] Customer Module
+- [ ] Reports
+- [ ] Dashboard Analytics
+
+---
+
+# 🛠 Tech Stack
+
+| Technology | Version |
+|------------|---------|
+| Laravel | 12 |
+| PHP | 8.x |
+| MySQL | Latest |
+| Bootstrap | 5 |
+| AdminLTE | 4 |
+| Vite | Latest |
+
+---
+
+# 🏗 Project Structure
+
+```text
+app
+├── Http
+│   ├── Controllers
+│   │   └── Admin
+│   └── Requests
+│
+├── Models
+│
+├── Providers
+│
+└── Services (Coming Soon)
+
+resources
+└── views
+    ├── admin
+    ├── components
+    └── layouts
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+# 🚀 Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Clone repository
 
-## Code of Conduct
+```bash
+git clone https://github.com/im0041/jurugiling.git
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Go to project directory
 
-## Security Vulnerabilities
+```bash
+cd jurugiling
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Install PHP dependencies
 
-## License
+```bash
+composer install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Install Node dependencies
+
+```bash
+npm install
+```
+
+Copy environment
+
+```bash
+cp .env.example .env
+```
+
+Generate application key
+
+```bash
+php artisan key:generate
+```
+
+Configure your database inside `.env`
+
+Run migration
+
+```bash
+php artisan migrate
+```
+
+Start development server
+
+```bash
+npm run dev
+
+php artisan serve
+```
+
+---
+
+# 📸 Screenshots
+
+## Dashboard
+
+> Coming Soon
+
+## Category
+
+> Coming Soon
+
+## Product
+
+> Coming Soon
+
+## Supplier
+
+> Coming Soon
+
+---
+
+# 🌿 Git Workflow
+
+This project follows a Feature Branch workflow.
+
+```text
+main
+│
+├── feature/category
+├── feature/product
+├── feature/supplier
+└── feature/purchase
+```
+
+Each module is developed in its own branch before being merged into the `main` branch.
+
+---
+
+# 🗺 Roadmap
+
+## ✅ v0.1.0
+
+- Authentication
+- Dashboard
+- Category Module
+- Product Module
+- Supplier Module
+
+---
+
+## 🚀 v0.2.0
+
+- Purchase Module
+- Purchase Detail
+- Automatic Stock Update
+
+---
+
+## 🚀 v0.3.0
+
+- Customer Module
+- Sales Module
+- Sales Detail
+
+---
+
+## 🚀 v0.4.0
+
+- Dashboard Analytics
+- Reports
+- Export PDF
+- Export Excel
+
+---
+
+# 🎯 Learning Objectives
+
+This project is developed to improve understanding of:
+
+- Laravel Framework
+- Software Architecture
+- Clean Code
+- Git Workflow
+- CRUD Development
+- Database Design
+- Inventory Management System
+
+---
+
+# 👨‍💻 Author
+
+**Imam Iswanto**
+
+GitHub
+
+https://github.com/im0041
+
+---
+
+# ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub.
