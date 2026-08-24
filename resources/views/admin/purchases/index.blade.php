@@ -7,7 +7,7 @@
             Purchases
         </h2>
 
-        <a href="#" class="btn btn-primary mb-3">
+        <a href="{{ route('purchases.create') }}" class="btn btn-primary mb-3">
             <i class="bi bi-plus-circle"></i>
             Tambah Purchase
         </a>

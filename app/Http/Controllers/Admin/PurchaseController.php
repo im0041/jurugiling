@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Purchase;
+use App\Models\Product;
+use App\Models\Supplier;
 
 class PurchaseController extends Controller
 {
@@ -24,7 +26,14 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        //
+        $suppliers = Supplier::orderBy('name')->get();
+        $products = Product::where('is_active', true)
+            ->orderBy('name')
+            ->get();
+        return view('admin.purchases.create', compact(
+            'suppliers',
+            'products'
+            ));
     }
 
     /**
