@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
-use App\HTTP\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\SupplierController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -35,8 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('suppliers', SupplierController::class);
    
     Route::resource('products', ProductController::class);
-    
-    Route::resource('suppliers', SupplierController::class);
 });
 
 Route::resource('categories', CategoryController::class)

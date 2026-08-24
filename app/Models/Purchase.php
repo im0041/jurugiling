@@ -3,25 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Purchase extends Model
 {
-    Schema::create('purchases', function (Blueprint $table) {
+    protected $fillable = [
+        'invoice_number',
+        'supplier_id',
+        'purchase_date',
+        'total',
+        ];
 
-    $table->id();
+    public function supplier(): BelongsTo
+    {
+        return $this->belongsTo(Supplier::class);
+        }
 
-    $table->string('invoice_number')->unique();
-
-    $table->foreignId('supplier_id')
-          ->constrained()
-          ->cascadeOnUpdate()
-          ->restrictOnDelete();
-
-    $table->date('purchase_date');
-
-    $table->decimal('total', 15, 2)->default(0);
-
-    $table->timestamps();
-
-});
+    public function items(): HasMany
+    {
+        return $this->hasMany(PurchaseItem::class);
+        }
 }
