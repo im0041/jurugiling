@@ -15,6 +15,11 @@ class Purchase extends Model
         'total',
         ];
 
+    protected $casts = [
+        'purchase_date' => 'date',
+        'total' => 'decimal:2',
+        ];
+
     public function supplier(): BelongsTo
     {
         return $this->belongsTo(Supplier::class);

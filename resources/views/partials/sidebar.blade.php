@@ -24,7 +24,7 @@
         Supplier
     </a>
 
-    <a href="#"
+    <a href="{{ route('purchases.index') }}"
         class="list-group-item list-group-item-action">
         <i class="nav-icon bi bi-receipt"></i>
         Pesanan
