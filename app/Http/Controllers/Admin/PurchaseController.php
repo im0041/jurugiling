@@ -10,6 +10,7 @@ use App\Models\Supplier;
 use App\Models\PurchaseItem;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePurchaseRequest;
+use App\Models\StockMovement;
 
 class PurchaseController extends Controller
 {
@@ -53,19 +54,33 @@ class PurchaseController extends Controller
                 'purchase_date' => $data['purchase_date'],
                 'total' => 0,
             ]);
+
             foreach ($data['items'] as $item) {
                 $subtotal = $item['qty'] * $item['price'];
+                
                 $purchase->items()->create([
                     'product_id' => $item['product_id'],
                     'qty' => $item['qty'],
                     'price' => $item['price'],
                     'subtotal' => $subtotal,
-                    ]);
+                ]);
+                
+                $product = Product::findOrFail($item['product_id']);
+                $product->increment('stock', $item['qty']);
+                $product->stockMovements()->create([
+                    'type' => 'purchase',
+                    'quantity' => $item['qty'],
+                    'reference_type' => Purchase::class,
+                    'reference_id' => $purchase->id,
+                    'note' => 'Stock masuk dari purchase ' . $purchase->invoice_number,
+                ]);
+                
                 $total += $subtotal;
-            }
+                
                 $purchase->update([
                     'total' => $total,
                 ]);
+            }
         });
         return redirect()
             ->route('purchases.index')
