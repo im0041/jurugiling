@@ -101,9 +101,13 @@ class PurchaseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Purchase $purchase)
     {
-        //
+        $purchase->load([
+            'supplier',
+            'items.product',
+        ]);
+        return view('admin.purchases.show', compact('purchase'));
     }
 
     /**

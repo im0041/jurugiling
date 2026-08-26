@@ -21,6 +21,7 @@
                     <th>Supplier</th>
                     <th>Tanggal</th>
                     <th>Total</th>
+                    <th>action</th>
                 </tr>
             </thead>
 
@@ -41,6 +42,12 @@
 
                         <td>
                             Rp {{ number_format($purchase->total, 0, ',', '.') }}
+                        </td>
+                        <td>
+                            <a href="{{ route('purchases.show', $purchase) }}" class="btn btn-sm btn-info">
+                            <i class="bi bi-eye"></i>
+                                Detail
+                            </a>
                         </td>
                     </tr>
 
