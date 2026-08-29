@@ -6,6 +6,17 @@
         <h2 class="mb-4">
             Purchases
         </h2>
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
+
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
         <a href="{{ route('purchases.create') }}" class="btn btn-primary mb-3">
             <i class="bi bi-plus-circle"></i>
@@ -48,6 +59,18 @@
                             <i class="bi bi-eye"></i>
                                 Detail
                             </a>
+                            <a href="{{ route('purchases.edit', $purchase) }}" class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+                            <form action="{{ route('purchases.destroy', $purchase) }}"
+                            method="POST"
+                            class="d-inline"
+                            onsubmit="return confirm('Yakin ingin menghapus purchase ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Delete
+                            </button>
                         </td>
                     </tr>
 

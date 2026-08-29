@@ -7,19 +7,15 @@
 <div class="card">
 
     <div class="card-header d-flex justify-content-between align-items-center">
-
         <h3 class="card-title">
             Detail Purchase
         </h3>
-
         <a href="{{ route('purchases.index') }}"
            class="btn btn-secondary">
 
             <i class="bi bi-arrow-left"></i>
             Kembali
-
         </a>
-
     </div>
 
     <div class="card-body">
@@ -104,13 +100,9 @@
                         Rp {{ number_format($purchase->total, 0, ',', '.') }}
                     </th>
                 </tr>
-
             </tfoot>
 
         </table>
-
     </div>
-
 </div>
-
 @endsection
