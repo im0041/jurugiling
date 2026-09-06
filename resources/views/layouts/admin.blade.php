@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+
 <body>
 
     @include('partials.navbar')
@@ -20,13 +21,24 @@
             </div>
 
             <div class="col-md-10 p-4">
-                @yield('content')
+                @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show">
+        {{ session('success') }}
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+        </button>
+    </div>
+@endif
+            @yield('content')
             </div>
 
         </div>
     </div>
 
     @include('partials.footer')
+    @stack('scripts')
 
 </body>
 </html>

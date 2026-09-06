@@ -9,6 +9,7 @@
 </h2>
 
 <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">
+    <i class="bi bi-plus-circle"></i>
     Tambah Kategori
 </a>
 @if(session('success'))

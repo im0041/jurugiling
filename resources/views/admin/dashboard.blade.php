@@ -6,39 +6,31 @@
 
 <h2>Dashboard</h2>
 
-<div class="row mt-4">
+<div class="row">
 
-    <div class="col-md-3">
+    <x-stat-card
+        title="Produk"
+        :value="$totalProducts"
+        icon="bi-box-seam"
+    />
 
-        <div class="card">
+    <x-stat-card
+        title="Kategori"
+        :value="$totalCategories"
+        icon="bi-tags"
+    />
 
-            <div class="card-body">
+    <x-stat-card
+        title="Produk Aktif"
+        :value="$activeProducts"
+        icon="bi-check-circle"
+    />
 
-                <h5>Produk</h5>
-
-                <h2>0</h2>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-md-3">
-
-        <div class="card">
-
-            <div class="card-body">
-
-                <h5>Kategori</h5>
-
-                <h2>0</h2>
-
-            </div>
-
-        </div>
-
-    </div>
+    <x-stat-card
+        title="Stok Menipis"
+        :value="$lowStockProducts"
+        icon="bi-exclamation-triangle"
+    />
 
 </div>
 
