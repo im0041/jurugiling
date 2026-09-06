@@ -53,6 +53,11 @@ class Product extends Model
         return $this->hasMany(StockMovement::class);
     }
 
+    public function saleItems()
+    {
+        return $this->hasMany(SaleItem::class);
+    }
+
     protected $fillable = [
     'category_id',
     'sku',
