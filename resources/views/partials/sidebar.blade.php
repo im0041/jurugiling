@@ -26,8 +26,14 @@
 
     <a href="{{ route('purchases.index') }}"
         class="list-group-item list-group-item-action">
-        <i class="nav-icon bi bi-receipt"></i>
+        <i class="nav-icon bi-cart-check"></i>
         Pesanan
+    </a>
+
+    <a href="{{ route('sales.index') }}"
+    class="list-group-item list-group-item-action">
+        <i class="nav-icon bi bi-receipt"></i>
+        Sales
     </a>
 
     <a href="#"
